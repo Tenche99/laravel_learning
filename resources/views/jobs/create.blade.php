@@ -15,8 +15,11 @@
                         <label for="title" class="block text-sm/6 font-medium text-gray-900">Title</label>
                         <div class="mt-2">
                             <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                                <input id="title" type="text" name="title" placeholder="Job Title" class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6" />
+                                <input id="title" type="text" name="title" placeholder="Job Title" class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6" required />
                             </div>
+                            @error('title')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -24,10 +27,22 @@
                         <label for="salary" class="block text-sm/6 font-medium text-gray-900">Salary</label>
                         <div class="mt-2">
                             <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                                <input id="salary" type="text" name="salary" placeholder="$50,000 USD" class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6" />
+                                <input id="salary" type="text" name="salary" placeholder="$50,000 USD" class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6" required />
                             </div>
+                            @error('salary')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
+                    <!-- <div class="mt-10">
+                        @if($errors->any())
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li class="text-red-500 font-medium">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </div> -->
                 </div>
             </div>
 
