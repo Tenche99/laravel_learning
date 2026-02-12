@@ -6,7 +6,8 @@ use App\Models\Job;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
 
 Route::get('/jobs', function () {
     $jobs = Job::with('employer')->latest()->simplePaginate(3);
@@ -30,6 +31,10 @@ Route::get('/job/{id}', function ($id) {
 });
 
 Route::post('/jobs', function () {
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required'],
+    ]);
     Job::create([
         'title' => request('title'),
         'salary' => request('salary'),
